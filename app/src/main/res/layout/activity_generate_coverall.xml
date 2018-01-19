@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jasenko.cwsboco_product_tool.Coats.GenerateCoatsActivity">
+
+             <LinearLayout
+                android:id = "@+id/first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textSize="15sp"
+                         android:layout_marginTop="2dp"
+                         android:padding="5dp"
+                         android:text="Account Name:"
+                         android:textStyle="bold"/>
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textSize="15sp"
+                         android:layout_marginTop="2dp"
+                         android:padding="5dp"
+                         android:text="Product:"
+                         android:textStyle="bold"/>
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:textSize="15sp"
+                         android:text="Product type:"
+                         android:textStyle="bold"/>
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:textSize="15sp"
+                         android:text="Cuffs:"
+                         android:textStyle="bold"/>
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="65dp"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:textSize="15sp"
+                         android:text="Pockets:"
+                         android:textStyle="bold"/>
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textSize="15sp"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:text="Collar:"
+                         android:textStyle="bold"/>
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:textSize="15sp"
+                         android:text="Rule pocket:"
+                         android:textStyle="bold"/>
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:textSize="15sp"
+                         android:text="Access:"
+                         android:textStyle="bold"/>
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="50dp"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:textSize="15sp"
+                         android:text="Fabric:"
+                         android:textStyle="bold"/>
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textSize="15sp"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:text="Garment color:"
+                         android:textStyle="bold"/>
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textSize="15sp"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:text="Collar color:"
+                         android:textStyle="bold"/>
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textSize="15sp"
+                         android:padding="5dp"
+                         android:layout_marginTop="2dp"
+                         android:text="Product code:"
+                         android:textStyle="bold"/>
+
+
+                 </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/first"
+                android:orientation="vertical"
+                android:id="@+id/linearLayout">
+
+                <TextView
+                    android:id="@+id/txtAccName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtProductType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtCuffs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtPockets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtCollar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtRulePocket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtAccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtFabric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtGarmentColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtCollarColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtProductCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold|italic" />
+
+            </LinearLayout>
+
+    <Button
+        android:id="@+id/btnGeneratePdf"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Generate PDF"
+        android:textSize="22dp" />
+
+</RelativeLayout>

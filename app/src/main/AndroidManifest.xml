@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.jasenko.cwsboco_product_tool">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/cws_boco23"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Coats.CoatsSpecActivity"/>
+
+        <activity android:name=".Coats.GenerateCoatsActivity"/>
+        <activity android:name=".PDFActivity" />
+        <activity android:name=".Coveralls.CoverallsSpecActivity" />
+        <activity android:name=".Coveralls.GenerateCoverallActivity" />
+        <activity android:name=".Jackets.JacketsSpecActivity" />
+        <activity
+            android:name=".Jackets.GenerateJacketActivity"
+            android:label="@string/title_activity_generate_jacket"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+
+</manifest>

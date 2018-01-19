@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jasenko.cwsboco_product_tool.PDFActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ddd"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="shareText"
+        android:padding="16dp"
+        android:text="Click to open shearing option" />
+
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.example.jasenko.cwsboco_product_tool.Signature.PaintView
+            android:id="@+id/paintView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="253dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="126dp" />
+    </com.github.barteksc.pdfviewer.PDFView>
+
+
+</android.support.constraint.ConstraintLayout>

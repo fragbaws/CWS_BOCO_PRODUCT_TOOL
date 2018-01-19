@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">CWS-Boco Product Tool</string>
+    <string name="logo">CWSBOCO_LOGO</string>
+    <string name="product_prompt">Select product</string>
+    <string name="cuffs_prompt">Select cuffs</string>
+    <string name="collar_prompt">Select collar</string>
+    <string name="pockets_prompt">Select pockets</string>
+    <string name="garment_color_prompt">Select garment color</string>
+    <string name="collar_color_prompt">Select collar color</string>
+    <string name="product_types_prompt">Select product type</string>
+    <string name="button_main">CONTINUE</string>
+    <string name="textProductType">Select product type:</string>
+    <string name="textCuffs">Select cuffs:</string>
+    <string name="textCollar">Select collar:</string>
+    <string name="textPockets">Select pockets:</string>
+    <string name="textGarmentColor">Select garment color:</string>
+    <string name="textCollarColor">Select collar color:</string>
+    <string name="button_generate_pdf">Generate PDF</string>
+    <string name="APP_KEY">onpgu4uunxqztta</string>
+
+
+    <string-array name="product_array">
+        <item>Choose product...</item>
+        <item>Apron</item>
+        <item>Coat</item>
+        <item>Coverall</item>
+        <item>Jacket</item>
+        <item>Trouser</item>
+    </string-array>
+
+    <string name="title_activity_coveralls_spec">CoverallsSpecActivity</string>
+    <string name="title_activity_generate_coverall">GenerateCoverallActivity</string>
+    <string name="title_activity_generate_jacket">GenerateJacketActivity</string>
+
+</resources>
