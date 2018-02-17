@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jasenko.cwsboco_product_tool.Coats.GenerateCoatsActivity">
+    tools:context="my.app.jasenko.cwsboco_product_tool.Coats.GenerateCoatsActivity">
 
              <LinearLayout
                 android:id = "@+id/first"

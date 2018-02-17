@@ -16,8 +16,6 @@
     <string name="textGarmentColor">Select garment color:</string>
     <string name="textCollarColor">Select collar color:</string>
     <string name="button_generate_pdf">Generate PDF</string>
-    <string name="APP_KEY">onpgu4uunxqztta</string>
-
 
     <string-array name="product_array">
         <item>Choose product...</item>
@@ -27,9 +25,5 @@
         <item>Jacket</item>
         <item>Trouser</item>
     </string-array>
-
-    <string name="title_activity_coveralls_spec">CoverallsSpecActivity</string>
-    <string name="title_activity_generate_coverall">GenerateCoverallActivity</string>
-    <string name="title_activity_generate_jacket">GenerateJacketActivity</string>
 
 </resources>

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jasenko.cwsboco_product_tool.Jackets.JacketsSpecActivity">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    tools:context="my.app.jasenko.cwsboco_product_tool.Jackets.JacketsSpecActivity">
 
         <LinearLayout
+            android:id = "@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -18,61 +15,69 @@
             <Spinner
                 android:id="@+id/spinner_product_type_jacket"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="50sp"
                 android:padding="1dp"
                 />
 
             <Spinner
                 android:id="@+id/spinner_collar_jacket"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="50sp"
                 android:padding="1dp" />
 
 
             <Spinner
                 android:id="@+id/spinner_cuffs_jacket"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="45sp"
                 android:padding="1dp" />
 
             <Spinner
                 android:id="@+id/spinner_pockets_jacket"
                 android:layout_width="match_parent"
-                android:layout_height="65sp"
+                android:layout_height="60sp"
                 android:padding="1dp" />
 
             <Spinner
                 android:id="@+id/spinner_stud"
                 android:layout_width="match_parent"
-                android:layout_height="65sp"
+                android:layout_height="50sp"
                 android:padding="1dp" />
 
             <Spinner
                 android:id="@+id/spinner_fabric_jacket"
                 android:layout_width="match_parent"
-                android:layout_height="65sp"
+                android:layout_height="50sp"
+                android:padding="1dp" />
+
+            <Spinner
+                android:id="@+id/spinner_sleeve_jacket"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
                 android:padding="1dp" />
 
             <Spinner
                 android:id="@+id/spinner_garmentColor_jacket"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="50sp"
                 android:padding="1dp" />
 
             <Spinner
                 android:id="@+id/spinner_collarColor_jacket"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="50sp"
                 android:padding="1dp" />
 
-            <Button
-                android:id="@+id/continue_button_spec_jacket"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="@string/button_main"
-                android:layout_gravity="center"/>
         </LinearLayout>
 
-    </ScrollView>
+    <Button
+        android:layout_below="@id/linearLayout"
+        android:id="@+id/continue_button_spec_jacket"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="22dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_main"/>
 
-</LinearLayout>
+</RelativeLayout>
