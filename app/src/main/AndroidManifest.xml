@@ -32,7 +32,9 @@
         <activity android:name=".Jackets.JacketsSpecActivity" />
         <activity android:name=".Jackets.GenerateJacketActivity" />
         <activity android:name=".Trousers.GenerateTrouserActivity" />
-        <activity android:name=".Trousers.TrousersSpecActivity"></activity>
+        <activity android:name=".Trousers.TrousersSpecActivity" />
+        <activity android:name=".Aprons.ApronsSpecActivity" />
+        <activity android:name=".Aprons.GenerateApronsActivity"></activity>
     </application>
 
 </manifest>

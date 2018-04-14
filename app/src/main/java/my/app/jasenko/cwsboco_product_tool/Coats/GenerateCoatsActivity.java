@@ -40,7 +40,7 @@ public class GenerateCoatsActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-                File folder = new File(Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/");
+               /* File folder = new File(Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/");
                 if (folder.isDirectory())
                 {
                     String[] children = folder.list();
@@ -48,7 +48,7 @@ public class GenerateCoatsActivity extends AppCompatActivity  {
                     {
                         new File(folder, children[i]).delete();
                     }
-                }
+                }*/
                 DownloadTask task = new DownloadTask();
                 task.mContext = GenerateCoatsActivity.this;
                 task.execute();

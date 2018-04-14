@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import my.app.jasenko.cwsboco_product_tool.Aprons.ApronsSpecActivity;
 import my.app.jasenko.cwsboco_product_tool.Coats.CoatsSpecActivity;
 import my.app.jasenko.cwsboco_product_tool.Coveralls.CoverallsSpecActivity;
 import my.app.jasenko.cwsboco_product_tool.Jackets.JacketsSpecActivity;
@@ -98,6 +99,11 @@ public class MainActivity extends AppCompatActivity {
                 else if(String.valueOf(productTypeSpinner.getSelectedItem()).equals("Trouser"))
                 {
                     Intent myIntent = new Intent(MainActivity.this, TrousersSpecActivity.class);
+                    startActivity(myIntent);
+                }
+                else if(String.valueOf(productTypeSpinner.getSelectedItem()).equals("Apron"))
+                {
+                    Intent myIntent = new Intent(MainActivity.this, ApronsSpecActivity.class);
                     startActivity(myIntent);
                 }
             }

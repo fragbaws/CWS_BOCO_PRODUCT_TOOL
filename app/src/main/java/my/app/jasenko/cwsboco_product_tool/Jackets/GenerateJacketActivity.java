@@ -43,7 +43,7 @@ public class GenerateJacketActivity extends AppCompatActivity  {
         btnGeneratePDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                File folder = new File(Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/");
+               /* File folder = new File(Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/");
                 if (folder.isDirectory())
                 {
                     String[] children = folder.list();
@@ -51,7 +51,7 @@ public class GenerateJacketActivity extends AppCompatActivity  {
                     {
                         new File(folder, children[i]).delete();
                     }
-                }
+                }*/
                 DownloadTask task = new DownloadTask();
                 task.mContext = GenerateJacketActivity.this;
                 task.execute();

@@ -1,4 +1,4 @@
-package my.app.jasenko.cwsboco_product_tool.Coveralls;
+package my.app.jasenko.cwsboco_product_tool.Aprons;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,32 +10,29 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import my.app.jasenko.cwsboco_product_tool.DownloadTask;
 import my.app.jasenko.cwsboco_product_tool.MainActivity;
 import my.app.jasenko.cwsboco_product_tool.PDFActivity;
 import my.app.jasenko.cwsboco_product_tool.ProductCode;
 import my.app.jasenko.cwsboco_product_tool.R;
 
-import java.io.File;
-import java.util.Timer;
-import java.util.TimerTask;
+public class GenerateApronsActivity extends AppCompatActivity {
 
-public class GenerateCoverallActivity extends AppCompatActivity  {
-
-    private TextView accName, product, productType,rulePocket,access,fabric, cuffs, pockets, collar, garmentColor, collarColor,productCode;
+    private TextView accName, product, productType,length, stripes, primaryColor, secondaryColor, productCode;
     private Button btnGeneratePDF;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generate_coverall);
+        setContentView(R.layout.activity_generate_aprons);
 
-
-        displayCoverallSpecDetails();
+        displayApronSpecDetails();
         btnGeneratePDFAction();
     }
-
 
     public void btnGeneratePDFAction() {
         this.btnGeneratePDF = (Button) findViewById(R.id.btnGeneratePdf);
@@ -53,55 +50,44 @@ public class GenerateCoverallActivity extends AppCompatActivity  {
                         new File(folder, children[i]).delete();
                     }
                 }*/
-
                 DownloadTask task = new DownloadTask();
-                task.mContext = GenerateCoverallActivity.this;
+                task.mContext = GenerateApronsActivity.this;
                 task.execute();
-                Toast.makeText(getApplicationContext(), "Downloading PDF...", Toast.LENGTH_LONG).show();
+                Toast.makeText(GenerateApronsActivity.this, "Downloading PDF...", Toast.LENGTH_LONG).show();
                 Toast.makeText(getApplicationContext(),"Opening PDF...",Toast.LENGTH_LONG).show();
 
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        Intent myIntent = new Intent(GenerateCoverallActivity.this, PDFActivity.class);
+                        Intent myIntent = new Intent(GenerateApronsActivity.this, PDFActivity.class);
                         startActivity(myIntent);
                     }
-                }, 11000);
+                }, 10000);
             }
         });
     }
 
-    public void displayCoverallSpecDetails() {
-
+    public void displayApronSpecDetails() {
         accName = (TextView) findViewById(R.id.txtAccName);
         product = (TextView) findViewById(R.id.txtProduct);
-        productType = (TextView) findViewById(R.id.txtProductType);
-        collar = (TextView) findViewById(R.id.txtCollar);
-        rulePocket = (TextView) findViewById(R.id.txtRulePocket);
-        pockets = (TextView) findViewById(R.id.txtPockets);
-        cuffs = (TextView) findViewById(R.id.txtCuffs);
-        access = (TextView) findViewById(R.id.txtAccess);
-        fabric = (TextView) findViewById(R.id.txtFabric);
-        garmentColor = (TextView) findViewById(R.id.txtGarmentColor);
-        collarColor = (TextView) findViewById(R.id.txtCollarColor);
+        productType = (TextView) findViewById(R.id.txtProductType  );
+        length = (TextView) findViewById(R.id.txtLength);
+        stripes = (TextView) findViewById(R.id.txtStripes);
+        primaryColor = (TextView) findViewById(R.id.txtPrimaryColor);
+        secondaryColor = (TextView) findViewById(R.id.txtSecondaryColor);
         productCode = (TextView) findViewById(R.id.txtProductCode);
 
         accName.setText(MainActivity.sAccName);
 
         product.setText(MainActivity.productChosen.getProduct());
 
-        MainActivity.ProductCode = new ProductCode(MainActivity.mDBHelper.getCoverallProductCode());
-        productType.setText(CoverallsSpecActivity.spinners[0].getSpinnerName());
-        collar.setText(CoverallsSpecActivity.spinners[1].getSpinnerName());
-        rulePocket.setText(CoverallsSpecActivity.spinners[2].getSpinnerName());
-        cuffs.setText(CoverallsSpecActivity.spinners[3].getSpinnerName());
-        pockets.setText(CoverallsSpecActivity.spinners[4].getSpinnerName());
-        access.setText(CoverallsSpecActivity.spinners[5].getSpinnerName());
-        fabric.setText(CoverallsSpecActivity.spinners[6].getSpinnerName());
-        garmentColor.setText(CoverallsSpecActivity.spinners[7].getSpinnerName());
-        collarColor.setText(CoverallsSpecActivity.spinners[8].getSpinnerName());
+        MainActivity.ProductCode = new ProductCode(MainActivity.mDBHelper.getApronProductCode());
+        productType.setText(ApronsSpecActivity.spinners[0].getSpinnerName());
+        length.setText(ApronsSpecActivity.spinners[1].getSpinnerName());
+        stripes.setText(ApronsSpecActivity.spinners[2].getSpinnerName());
+        primaryColor.setText(ApronsSpecActivity.spinners[3].getSpinnerName());
+        secondaryColor.setText(ApronsSpecActivity.spinners[4].getSpinnerName());
         productCode.setText(MainActivity.ProductCode.getProductCode());
-
     }
 
     @Override
@@ -112,7 +98,4 @@ public class GenerateCoverallActivity extends AppCompatActivity  {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
-
 }

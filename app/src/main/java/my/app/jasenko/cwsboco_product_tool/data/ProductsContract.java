@@ -110,13 +110,6 @@ public final class ProductsContract {
         public static final String COLUMN_COAT_COLOR_COMBINATIONS_CODE = "Code";
     }
 
-    public static final class FlameRetardantColorCombinationsEntry implements BaseColumns{
-        public static final String TABLE_NAME ="flame_retardant_color_combinations";
-        public static final String COLUMN_FLAME_RETARDANT_COLOR_COMBINATIONS_ID = "id";
-        public static final String COLUMN_FLAME_RETARDANT_COMBINATIONS_GARMENT_COLOR = "GarmentColour";
-        public static final String COLUMN_FLAME_RETARDANT_COMBINATIONS_CODE = "Code";
-    }
-
     public static final class EngineeringColorCombinationsEntry implements BaseColumns {
         public static final String TABLE_NAME = "engineering_color_combinations";
         public static final String COLUMN_ENGINEERING_COLOR_COMBINATIONS_ID = "id";
@@ -131,5 +124,27 @@ public final class ProductsContract {
         public static final String COLUMN_FOOD_CATERING_COMBINATIONS_GARMENT_COLOR = "GarmentColour";
         public static final String COLUMN_FOOD_CATERING_COMBINATIONS_COLLAR_COLOR = "CollarColour";
         public static final String COLUMN_FOOD_CATERING_COMBINATIONS_CODE = "Code";
+    }
+
+    public static final class ApronsEntry implements BaseColumns{
+
+        public static final String TABLE_NAME = "aprons";
+        public static final String COLUMN_APRONS_ID = "id";
+        public static final String COLUMN_APRONS_PRODUCT_ID = "ProductId";
+        public static final String COLUMN_APRONS_PRODUCT = "Product";
+        public static final String COLUMN_APRONS_LENGTH_ID = "LengthId";
+        public static final String COLUMN_APRONS_LENGTH = "Length";
+        public static final String COLUMN_APRONS_STRIPES_ID = "StripesId";
+        public static final String COLUMN_APRONS_STRIPES = "Stripes";
+        public static final String COLUMN_APRONS_ABS_PRODUCT_CODE = "ABS_ProductCode";
+    }
+
+    public static final class ApronsColorCombinationsEntry implements BaseColumns {
+        public static final String TABLE_NAME = "apron_color_combinations";
+        public static final String COLUMN_APRON_COLOR_COMBINATIONS_ID = "id";
+        public static final String COLUMN_APRON_PRIMARY_COLOR = "PrimaryColor";
+        public static final String COLUMN_APRON_SECONDARY_COLOR = "SecondaryColor";
+        public static final String COLUMN_APRON_COMBINATIONS_CODE = "Code";
+        public static final String COLUMN_APRON_STRIPED = "Striped";
     }
 }

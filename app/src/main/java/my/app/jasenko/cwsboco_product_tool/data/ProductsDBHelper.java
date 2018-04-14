@@ -5,8 +5,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 
+import my.app.jasenko.cwsboco_product_tool.Aprons.ApronsSpecActivity;
 import my.app.jasenko.cwsboco_product_tool.Coats.CoatsSpecActivity;
 import my.app.jasenko.cwsboco_product_tool.Coveralls.CoverallsSpecActivity;
 import my.app.jasenko.cwsboco_product_tool.Jackets.JacketsSpecActivity;
@@ -19,10 +22,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static my.app.jasenko.cwsboco_product_tool.data.ProductsContract.CoatColorCombinationsEntry;
-import static my.app.jasenko.cwsboco_product_tool.data.ProductsContract.JacketsEntry;
-import static my.app.jasenko.cwsboco_product_tool.data.ProductsContract.CoverallEntry;
-import static my.app.jasenko.cwsboco_product_tool.data.ProductsContract.CoatsEntry;
+import static android.widget.Toast.LENGTH_SHORT;
+import static my.app.jasenko.cwsboco_product_tool.data.ProductsContract.*;
+
 
 /**
  * Created by Jasenko on 27/12/2017.
@@ -171,15 +173,10 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
         try {
             String selectQuery = "";
 
-            if(CoverallsSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
+            if(CoverallsSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
             {
-                selectQuery = "SELECT distinct " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.FlameRetardantColorCombinationsEntry.TABLE_NAME;
-            }
-            else if(CoverallsSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
-            {
-                selectQuery = "SELECT distinct " + ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.EngineeringColorCombinationsEntry.TABLE_NAME;
+                selectQuery = "SELECT distinct " + EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR +
+                        "\nFROM " + EngineeringColorCombinationsEntry.TABLE_NAME;
             }
             else {
                 selectQuery = "SELECT distinct " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_GARMENT_COLOR +
@@ -212,19 +209,16 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
             String selectQuery;
 
-            if(CoverallsSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
+            if(CoverallsSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
             {
-                list.add("NULL");
-                return list;
-            }
-            else if(CoverallsSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
-            {
-                selectQuery = "SELECT distinct " + ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_COLLAR_COLOR +
-                        "\nFROM " + ProductsContract.EngineeringColorCombinationsEntry.TABLE_NAME + "\nWHERE "+ ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR+"=\""+ CoverallsSpecActivity.spinners[7].getSpinnerName()+"\"";
+                selectQuery = "SELECT distinct " + EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_COLLAR_COLOR +
+                        "\nFROM " + EngineeringColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE "+ EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR+"=\""+ CoverallsSpecActivity.spinners[7].getSpinnerName()+"\"";
             }
             else {
                 selectQuery = "SELECT distinct " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_COLLAR_COLOR +
-                        "\nFROM " + CoatColorCombinationsEntry.TABLE_NAME + "\nWHERE " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_GARMENT_COLOR + "=\"" + CoverallsSpecActivity.spinners[7].getSpinnerName() + "\"";
+                        "\nFROM " + CoatColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_GARMENT_COLOR + "=\"" + CoverallsSpecActivity.spinners[7].getSpinnerName() + "\"";
             }
 
             Cursor cursor = db.rawQuery(selectQuery, null);
@@ -252,19 +246,14 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
         try {
             String selectQuery = "";
 
-            if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
+            if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Food / Catering"))
             {
-                list.add("NULL");
-                return list;
-            }
-            else if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Food / Catering"))
-            {
-                selectQuery = "SELECT distinct " + ProductsContract.FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_COLLAR_COLOR +
-                        "\nFROM " + ProductsContract.FoodCateringColorCombinationsEntry.TABLE_NAME + "\nWHERE "+ ProductsContract.FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_GARMENT_COLOR+"=\""+ JacketsSpecActivity.spinners[7].getSpinnerName()+"\"";
+                selectQuery = "SELECT distinct " + FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_COLLAR_COLOR +
+                        "\nFROM " + FoodCateringColorCombinationsEntry.TABLE_NAME + "\nWHERE "+ FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_GARMENT_COLOR+"=\""+ JacketsSpecActivity.spinners[7].getSpinnerName()+"\"";
 
             } else if (JacketsSpecActivity.spinners[0].getSpinnerName().equals("Engineering")) {
-                selectQuery = "SELECT distinct " + ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_COLLAR_COLOR +
-                        "\nFROM " + ProductsContract.EngineeringColorCombinationsEntry.TABLE_NAME + "\nWHERE "+ ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR+"=\""+ JacketsSpecActivity.spinners[7].getSpinnerName()+"\"";
+                selectQuery = "SELECT distinct " + EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_COLLAR_COLOR +
+                        "\nFROM " + EngineeringColorCombinationsEntry.TABLE_NAME + "\nWHERE "+ EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR+"=\""+ JacketsSpecActivity.spinners[7].getSpinnerName()+"\"";
             }
             else {
                 selectQuery = "SELECT distinct " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_COLLAR_COLOR +
@@ -296,20 +285,15 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
         try {
             String selectQuery = "";
 
-            if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
+            if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
             {
-                selectQuery = "SELECT distinct " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.FlameRetardantColorCombinationsEntry.TABLE_NAME;
-            }
-            else if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
-            {
-                selectQuery = "SELECT distinct " + ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.EngineeringColorCombinationsEntry.TABLE_NAME;
+                selectQuery = "SELECT distinct " + EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR +
+                        "\nFROM " + EngineeringColorCombinationsEntry.TABLE_NAME;
             }
             else if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Food / Catering"))
             {
-                selectQuery = "SELECT distinct " + ProductsContract.FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.FoodCateringColorCombinationsEntry.TABLE_NAME;
+                selectQuery = "SELECT distinct " + FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_GARMENT_COLOR +
+                        "\nFROM " + FoodCateringColorCombinationsEntry.TABLE_NAME;
             }
             else {
                 selectQuery = "SELECT distinct " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_GARMENT_COLOR +
@@ -342,34 +326,106 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
             String selectQuery;
 
-            if(TrousersSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
+            if(TrousersSpecActivity.spinners[0].getSpinnerName().equals("Food / Catering"))
             {
-                selectQuery = "SELECT distinct " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_GARMENT_COLOR +
-                            "\nFROM " + ProductsContract.FlameRetardantColorCombinationsEntry.TABLE_NAME;
-            }
-            else if(TrousersSpecActivity.spinners[0].getSpinnerName().equals("Food / Catering"))
-            {
-                selectQuery = "SELECT distinct " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.TrouserColorCombinationsEntry.TABLE_NAME;
+                selectQuery = "SELECT distinct " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR +
+                        "\nFROM " + TrouserColorCombinationsEntry.TABLE_NAME;
             }
             else if(TrousersSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
             {
-                selectQuery = "SELECT distinct " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.TrouserColorCombinationsEntry.TABLE_NAME +
-                        "\nWHERE " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + " != \"WHITE\""
-                        + " and " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + " != \"BLACK\"";
+                selectQuery = "SELECT distinct " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR +
+                        "\nFROM " + TrouserColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + " != \"WHITE\""
+                        + " and " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + " != \"BLACK\"";
             }
             else
             {
-                selectQuery = "SELECT distinct " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR +
-                        "\nFROM " + ProductsContract.TrouserColorCombinationsEntry.TABLE_NAME +
-                        "\nWHERE " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + " != \"BLACK\"";
+                selectQuery = "SELECT distinct " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR +
+                        "\nFROM " + TrouserColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + " != \"BLACK\"";
 
             }
 
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
                 String value = cursor.getString(cursor.getColumnIndex("GarmentColour"));
+                list.add(value);
+            }
+            cursor.close();
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+        return list;
+    }
+
+    public ArrayList<String> getApronPrimaryColor() {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Select primary color...");
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+
+        try {
+
+            String selectQuery;
+            if(ApronsSpecActivity.spinners[2].getSpinnerName().equals("No"))
+            {
+                selectQuery = "SELECT distinct " + ApronsColorCombinationsEntry.COLUMN_APRON_PRIMARY_COLOR +
+                        "\nFROM " + ApronsColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + ApronsColorCombinationsEntry.COLUMN_APRON_SECONDARY_COLOR +"!="+ "\"White Striped\"";
+            }
+            else
+            {
+                selectQuery = "SELECT distinct " + ApronsColorCombinationsEntry.COLUMN_APRON_PRIMARY_COLOR +
+                        "\nFROM " + ApronsColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + ApronsColorCombinationsEntry.COLUMN_APRON_SECONDARY_COLOR + "=" + "\"White Striped\"";
+            }
+
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            while (cursor.moveToNext()) {
+                String value = cursor.getString(cursor.getColumnIndex("PrimaryColor"));
+                list.add(value);
+            }
+            cursor.close();
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+        return list;
+    }
+
+    public ArrayList<String> getApronSecondaryColor() {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Select secondary color...");
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+
+        try {
+            String selectQuery;
+            if(ApronsSpecActivity.spinners[2].getSpinnerName().equals("No")) {
+
+                selectQuery = "SELECT distinct " + ApronsColorCombinationsEntry.COLUMN_APRON_SECONDARY_COLOR +
+                        "\nFROM " + ApronsColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + ApronsColorCombinationsEntry.COLUMN_APRON_PRIMARY_COLOR + "=" + " \"" + ApronsSpecActivity.spinners[3].getSpinnerName() + "\"" + " and " +
+                                    ApronsColorCombinationsEntry.COLUMN_APRON_STRIPED + "=" +" \"N\"";
+            }
+            else
+            {
+                selectQuery = "SELECT distinct " + ApronsColorCombinationsEntry.COLUMN_APRON_SECONDARY_COLOR +
+                        "\nFROM " + ApronsColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + ApronsColorCombinationsEntry.COLUMN_APRON_PRIMARY_COLOR + "=" + " \"" + ApronsSpecActivity.spinners[3].getSpinnerName() + "\"" + " and " +
+                                     ApronsColorCombinationsEntry.COLUMN_APRON_STRIPED + "=" +" \"Y\"";
+            }
+
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            while (cursor.moveToNext()) {
+                String value = cursor.getString(cursor.getColumnIndex("SecondaryColor"));
                 list.add(value);
             }
             cursor.close();
@@ -392,8 +448,8 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
         db.beginTransaction();
 
         try {
-            String selectQuery = "SELECT distinct " + ProductsContract.CoatsEntry.COLUMN_COATS_TYPE +
-                    " FROM " + ProductsContract.CoatsEntry.TABLE_NAME;
+            String selectQuery = "SELECT distinct " + CoatsEntry.COLUMN_COATS_TYPE +
+                    " FROM " + CoatsEntry.TABLE_NAME;
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
                 String value = cursor.getString(cursor.getColumnIndex("Type"));
@@ -543,7 +599,7 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
         try {
             String selectQuery = "SELECT distinct " + CoverallEntry.COLUMN_COVERALLS_TYPE +
-                    " FROM " + ProductsContract.CoverallEntry.TABLE_NAME;
+                    " FROM " + CoverallEntry.TABLE_NAME;
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
                 String value = cursor.getString(cursor.getColumnIndex("Type"));
@@ -745,18 +801,10 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
                     + CoverallEntry.COLUMN_COVERALLS_CUFFS +"= \""+CoverallsSpecActivity.spinners[3].getSpinnerName()+"\"" +" and "+ CoverallEntry.COLUMN_COVERALLS_POCKETS +"= \""+CoverallsSpecActivity.spinners[4].getSpinnerName()+"\"" +" and "
                     + CoverallEntry.COLUMN_COVERALLS_ACCESS+"= \""+CoverallsSpecActivity.spinners[5].getSpinnerName()+"\"" +" and "+ CoverallEntry.COLUMN_COVERALLS_FABRIC +"=\""+CoverallsSpecActivity.spinners[6].getSpinnerName()+"\"";
 
-            String selectQueryColorCode;
-
-            if(CoverallsSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
-            {
-                selectQueryColorCode = "SELECT " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_CODE +
-                        "\nFROM " + ProductsContract.FlameRetardantColorCombinationsEntry.TABLE_NAME + "\nWHERE " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_GARMENT_COLOR + "=\"" + CoverallsSpecActivity.spinners[7].getSpinnerName() + "\"";
-            }
-            else {
-                selectQueryColorCode = "SELECT " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_CODE +
+            String selectQueryColorCode = "SELECT " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_CODE +
                         "\nFROM " + CoatColorCombinationsEntry.TABLE_NAME + "\nWHERE " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_GARMENT_COLOR + "=\"" + CoverallsSpecActivity.spinners[7].getSpinnerName() + "\"" +
                         " and " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_COLLAR_COLOR + "=\"" + CoverallsSpecActivity.spinners[8].getSpinnerName() + "\"";
-            }
+
 
 
             Cursor cursor1 = db.rawQuery(selectQueryProductCode, null);
@@ -1010,24 +1058,18 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
             String selectQueryColorCode;
 
-            if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
-            {
-                selectQueryColorCode = "SELECT " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_CODE +
-                        "\nFROM " + ProductsContract.FlameRetardantColorCombinationsEntry.TABLE_NAME
-                        + "\nWHERE " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_GARMENT_COLOR + "=\"" + JacketsSpecActivity.spinners[7].getSpinnerName() + "\"";
-            }
-            else if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Food / Catering")) {
-                selectQueryColorCode = "SELECT distinct " + ProductsContract.FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_CODE +
-                                        "\nFROM " + ProductsContract.FoodCateringColorCombinationsEntry.TABLE_NAME +
-                                         "\nWHERE " + ProductsContract.FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_GARMENT_COLOR + "=\"" + JacketsSpecActivity.spinners[7].getSpinnerName() + "\""
-                                         + " and " + ProductsContract.FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_COLLAR_COLOR + "=\"" + JacketsSpecActivity.spinners[8].getSpinnerName() +"\"";
+            if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Food / Catering")) {
+                selectQueryColorCode = "SELECT distinct " + FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_CODE +
+                                        "\nFROM " + FoodCateringColorCombinationsEntry.TABLE_NAME +
+                                         "\nWHERE " + FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_GARMENT_COLOR + "=\"" + JacketsSpecActivity.spinners[7].getSpinnerName() + "\""
+                                         + " and " + FoodCateringColorCombinationsEntry.COLUMN_FOOD_CATERING_COMBINATIONS_COLLAR_COLOR + "=\"" + JacketsSpecActivity.spinners[8].getSpinnerName() +"\"";
             }
             else if(JacketsSpecActivity.spinners[0].getSpinnerName().equals("Engineering"))
             {
-                selectQueryColorCode = "SELECT distinct " + ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_CODE +
-                                    "\nFROM " + ProductsContract.EngineeringColorCombinationsEntry.TABLE_NAME +
-                                    "\nWHERE " + ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR + "=\"" + JacketsSpecActivity.spinners[7].getSpinnerName() +"\""
-                                    + " and " + ProductsContract.EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_COLLAR_COLOR + "=\"" + JacketsSpecActivity.spinners[8].getSpinnerName() + "\"";
+                selectQueryColorCode = "SELECT distinct " + EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_CODE +
+                                    "\nFROM " + EngineeringColorCombinationsEntry.TABLE_NAME +
+                                    "\nWHERE " + EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_GARMENT_COLOR + "=\"" + JacketsSpecActivity.spinners[7].getSpinnerName() +"\""
+                                    + " and " + EngineeringColorCombinationsEntry.COLUMN_ENGINEERING_COMBINATIONS_COLLAR_COLOR + "=\"" + JacketsSpecActivity.spinners[8].getSpinnerName() + "\"";
             }
             else{
                 selectQueryColorCode = "SELECT distinct " + CoatColorCombinationsEntry.COLUMN_COAT_COLOR_COMBINATIONS_CODE +
@@ -1068,8 +1110,8 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
         db.beginTransaction();
 
         try {
-            String selectQuery = "SELECT distinct " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_TYPE +
-                    "\nFROM " + ProductsContract.TrousersEntry.TABLE_NAME;
+            String selectQuery = "SELECT distinct " + TrousersEntry.COLUMN_TROUSERS_TYPE +
+                    "\nFROM " + TrousersEntry.TABLE_NAME;
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
                 String value = cursor.getString(cursor.getColumnIndex("Type"));
@@ -1094,9 +1136,9 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
         try {
 
-            String selectQuery = "SELECT distinct " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_WAIST +
-                    "\nFROM " + ProductsContract.TrousersEntry.TABLE_NAME
-                    + "\nWHERE " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\"";
+            String selectQuery = "SELECT distinct " + TrousersEntry.COLUMN_TROUSERS_WAIST +
+                    "\nFROM " + TrousersEntry.TABLE_NAME
+                    + "\nWHERE " + TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\"";
 
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
@@ -1122,10 +1164,10 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
         try {
 
-            String selectQuery = "SELECT distinct " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_POCKETS
-                    + "\nFROM " + ProductsContract.TrousersEntry.TABLE_NAME
-                    + "\nWHERE " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\"";
+            String selectQuery = "SELECT distinct " + TrousersEntry.COLUMN_TROUSERS_POCKETS
+                    + "\nFROM " + TrousersEntry.TABLE_NAME
+                    + "\nWHERE " + TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\"";
 
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
@@ -1151,11 +1193,11 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
         try {
 
-            String selectQuery = "SELECT distinct " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_FLY
-                    + "\nFROM " + ProductsContract.TrousersEntry.TABLE_NAME
-                    + "\nWHERE " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_POCKETS + "= \"" + TrousersSpecActivity.spinners[2].getSpinnerName()+"\"";
+            String selectQuery = "SELECT distinct " + TrousersEntry.COLUMN_TROUSERS_FLY
+                    + "\nFROM " + TrousersEntry.TABLE_NAME
+                    + "\nWHERE " + TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_POCKETS + "= \"" + TrousersSpecActivity.spinners[2].getSpinnerName()+"\"";
 
 
             Cursor cursor = db.rawQuery(selectQuery, null);
@@ -1182,12 +1224,12 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
         try {
 
-            String selectQuery = "SELECT distinct " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_FABRIC
-                    + "\nFROM " + ProductsContract.TrousersEntry.TABLE_NAME
-                    + "\nWHERE " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_POCKETS + "= \"" + TrousersSpecActivity.spinners[2].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_FLY + "= \"" + TrousersSpecActivity.spinners[3].getSpinnerName()+"\"";
+            String selectQuery = "SELECT distinct " + TrousersEntry.COLUMN_TROUSERS_FABRIC
+                    + "\nFROM " + TrousersEntry.TABLE_NAME
+                    + "\nWHERE " + TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_POCKETS + "= \"" + TrousersSpecActivity.spinners[2].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_FLY + "= \"" + TrousersSpecActivity.spinners[3].getSpinnerName()+"\"";
 
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
@@ -1214,27 +1256,148 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
 
         try {
 
-            String selectQueryProductCode = "SELECT distinct " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_ABS_PRODUCT_CODE
-                    + "\nFROM " + ProductsContract.TrousersEntry.TABLE_NAME
-                    + "\nWHERE " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_POCKETS + "= \"" + TrousersSpecActivity.spinners[2].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_FLY + "= \"" + TrousersSpecActivity.spinners[3].getSpinnerName()+"\""
-                    + " and " + ProductsContract.TrousersEntry.COLUMN_TROUSERS_FABRIC + "= \"" + TrousersSpecActivity.spinners[4].getSpinnerName()+"\"";
+            String selectQueryProductCode = "SELECT distinct " + TrousersEntry.COLUMN_TROUSERS_ABS_PRODUCT_CODE
+                    + "\nFROM " + TrousersEntry.TABLE_NAME
+                    + "\nWHERE " + TrousersEntry.COLUMN_TROUSERS_TYPE + "= \"" + TrousersSpecActivity.spinners[0].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_WAIST + "= \"" + TrousersSpecActivity.spinners[1].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_POCKETS + "= \"" + TrousersSpecActivity.spinners[2].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_FLY + "= \"" + TrousersSpecActivity.spinners[3].getSpinnerName()+"\""
+                    + " and " + TrousersEntry.COLUMN_TROUSERS_FABRIC + "= \"" + TrousersSpecActivity.spinners[4].getSpinnerName()+"\"";
 
-            String selectQueryColorCode;
+            String selectQueryColorCode= "SELECT " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_CODE +
+                        "\nFROM " + TrouserColorCombinationsEntry.TABLE_NAME +
+                        "\nWHERE " + TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + "=\"" + TrousersSpecActivity.spinners[5].getSpinnerName() + "\"";
 
-            if(TrousersSpecActivity.spinners[0].getSpinnerName().equals("Flame Retardant"))
-            {
-                selectQueryColorCode = "SELECT " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_CODE +
-                        "\nFROM " + ProductsContract.FlameRetardantColorCombinationsEntry.TABLE_NAME
-                        + "\nWHERE " + ProductsContract.FlameRetardantColorCombinationsEntry.COLUMN_FLAME_RETARDANT_COMBINATIONS_GARMENT_COLOR + "=\"" + TrousersSpecActivity.spinners[5].getSpinnerName() + "\"";
+
+            Cursor cursor1 = db.rawQuery(selectQueryProductCode, null);
+            while(cursor1.moveToNext()) {
+                productCode = cursor1.getString(cursor1.getColumnIndex("ABS_ProductCode"));
             }
-            else {
-                selectQueryColorCode = "SELECT " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_CODE +
-                        "\nFROM " + ProductsContract.TrouserColorCombinationsEntry.TABLE_NAME +
-                        "\nWHERE " + ProductsContract.TrouserColorCombinationsEntry.COLUMN_TROUSER_COLOR_COMBINATIONS_GARMENT_COLOR + "=\"" + TrousersSpecActivity.spinners[5].getSpinnerName() + "\"";
+            cursor1.close();
+
+            Cursor cursor2 = db.rawQuery(selectQueryColorCode,null);
+            while(cursor2.moveToNext()) {
+                colorCode = cursor2.getString(cursor2.getColumnIndex("Code"));
             }
+            cursor2.close();
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+
+        return (productCode+colorCode) ;
+    }
+
+    /* ------- APRON QUERIES ------- */
+
+    public ArrayList<String> getApronProductType() {
+
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Select product type...");
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+
+        try {
+            String selectQuery = "SELECT distinct " + ApronsEntry.COLUMN_APRONS_PRODUCT +
+                    "\nFROM " + ApronsEntry.TABLE_NAME;
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            while (cursor.moveToNext()) {
+                String value = cursor.getString(cursor.getColumnIndex("Product"));
+                Log.e("PRODUCT FOUND:", value);
+                list.add(value);
+            }
+            cursor.close();
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+        return list;
+    }
+
+    public ArrayList<String> getApronLength() {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Select length...");
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+
+        try {
+
+            String selectQuery = "SELECT distinct " + ApronsEntry.COLUMN_APRONS_LENGTH +
+                    "\nFROM " + ApronsEntry.TABLE_NAME +
+                    "\nWHERE " + ApronsEntry.COLUMN_APRONS_PRODUCT + "=\"" + ApronsSpecActivity.spinners[0].getSpinnerName()+"\"";
+
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            while (cursor.moveToNext()) {
+                String value = cursor.getString(cursor.getColumnIndex("Length"));
+                Log.e("LENGTH FOUND:", value);
+                list.add(value);
+            }
+            cursor.close();
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+        return list;
+    }
+
+    public ArrayList<String> getApronStripe() {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Select stripes...");
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+
+        try {
+
+            String selectQuery = "SELECT distinct " + ApronsEntry.COLUMN_APRONS_STRIPES +
+                    "\nFROM " + ApronsEntry.TABLE_NAME +
+                    "\nWHERE " + ApronsEntry.COLUMN_APRONS_PRODUCT + "=\"" + ApronsSpecActivity.spinners[0].getSpinnerName()+"\"" + " and " +
+                                 ApronsEntry.COLUMN_APRONS_LENGTH + "=\"" + ApronsSpecActivity.spinners[1].getSpinnerName()+"\"";
+
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            while (cursor.moveToNext()) {
+                String value = cursor.getString(cursor.getColumnIndex("Stripes"));
+                Log.e("STRIPE FOUND:", value);
+                list.add(value);
+            }
+            cursor.close();
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+        return list;
+    }
+
+    public String getApronProductCode(){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+        String productCode = new String();
+        String colorCode = new String();
+
+        try {
+
+            String selectQueryProductCode = "SELECT distinct " + ApronsEntry.COLUMN_APRONS_ABS_PRODUCT_CODE +
+                    "\nFROM " + ApronsEntry.TABLE_NAME +
+                    "\nWHERE " + ApronsEntry.COLUMN_APRONS_PRODUCT + "=\"" + ApronsSpecActivity.spinners[0].getSpinnerName()+"\"" + " and " +
+                                 ApronsEntry.COLUMN_APRONS_LENGTH + "=\"" + ApronsSpecActivity.spinners[1].getSpinnerName()+"\"" + " and " +
+                                 ApronsEntry.COLUMN_APRONS_STRIPES + "=\"" + ApronsSpecActivity.spinners[2].getSpinnerName() +"\"";
+
+            String selectQueryColorCode = "SELECT distinct " + ApronsColorCombinationsEntry.COLUMN_APRON_COMBINATIONS_CODE +
+                    "\nFROM " + ApronsColorCombinationsEntry.TABLE_NAME +
+                    "\nWHERE " + ApronsColorCombinationsEntry.COLUMN_APRON_PRIMARY_COLOR + "=" +" \"" +ApronsSpecActivity.spinners[3].getSpinnerName() +"\"" + " and " +
+                                ApronsColorCombinationsEntry.COLUMN_APRON_SECONDARY_COLOR + "=" +" \"" +ApronsSpecActivity.spinners[4].getSpinnerName() + "\"";
 
 
             Cursor cursor1 = db.rawQuery(selectQueryProductCode, null);

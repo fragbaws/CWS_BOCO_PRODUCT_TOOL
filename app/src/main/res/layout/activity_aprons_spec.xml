@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="my.app.jasenko.cwsboco_product_tool.Aprons.ApronsSpecActivity">
+
+    <LinearLayout
+        android:id = "@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinner_product_type_aprons"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:padding="16dp"
+            android:prompt="@string/product_types_prompt"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_length"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:padding="16dp" />
+
+        <Spinner
+            android:id="@+id/spinner_stripes"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:padding="16dp" />
+
+
+        <Spinner
+            android:id="@+id/spinner_primaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:padding="16dp" />
+
+        <Spinner
+            android:id="@+id/spinner_secondaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:padding="16dp" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_below="@id/linearLayout"
+        android:id="@+id/continue_button_spec"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="22dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_main"/>
+
+</RelativeLayout>
