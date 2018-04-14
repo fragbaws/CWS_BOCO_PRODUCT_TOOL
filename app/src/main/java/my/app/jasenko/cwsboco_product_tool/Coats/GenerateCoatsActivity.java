@@ -2,6 +2,7 @@ package my.app.jasenko.cwsboco_product_tool.Coats;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import my.app.jasenko.cwsboco_product_tool.MainActivity;
 import my.app.jasenko.cwsboco_product_tool.PDFActivity;
 import my.app.jasenko.cwsboco_product_tool.ProductCode;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,6 +22,7 @@ public class GenerateCoatsActivity extends AppCompatActivity  {
 
     private TextView accName, product, productType, cuffs, pockets, collar, garmentColor, collarColor, productCode;
     private Button btnGeneratePDF;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,15 @@ public class GenerateCoatsActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
+                File folder = new File(Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/");
+                if (folder.isDirectory())
+                {
+                    String[] children = folder.list();
+                    for (int i = 0; i < children.length; i++)
+                    {
+                        new File(folder, children[i]).delete();
+                    }
+                }
                 DownloadTask task = new DownloadTask();
                 task.mContext = GenerateCoatsActivity.this;
                 task.execute();
@@ -49,7 +61,7 @@ public class GenerateCoatsActivity extends AppCompatActivity  {
                         Intent myIntent = new Intent(GenerateCoatsActivity.this, PDFActivity.class);
                         startActivity(myIntent);
                     }
-                }, 9000);
+                }, 10000);
             }
         });
     }

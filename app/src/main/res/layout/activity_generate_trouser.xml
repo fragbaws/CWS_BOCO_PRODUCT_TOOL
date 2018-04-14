@@ -14,7 +14,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:textSize="16sp"
             android:padding="8dp"
             android:text="Account Name:"
@@ -39,7 +39,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:padding="8dp"
             android:textSize="16sp"
             android:text="Waist:"
@@ -99,7 +99,7 @@
         <TextView
             android:id="@+id/txtAccName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:padding="8dp"
             android:textSize="16sp"
             android:textStyle="italic" />
@@ -120,7 +120,7 @@
         <TextView
             android:id="@+id/txtWaist"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:padding="8dp"
             android:textSize="16sp"
             android:textStyle="italic" />

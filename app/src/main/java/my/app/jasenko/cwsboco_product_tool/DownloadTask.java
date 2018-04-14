@@ -1,11 +1,13 @@
 package my.app.jasenko.cwsboco_product_tool;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.io.CopyStreamAdapter;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -26,7 +28,6 @@ public class DownloadTask extends AsyncTask {
     private int port = 21;
     private String user = "serg124";
     private String pass = "Serg8595";
-
 
     @Override
     protected Object doInBackground(Object[] objects) {
@@ -52,8 +53,8 @@ public class DownloadTask extends AsyncTask {
             OutputStream outputStream = null;
             try {
                 outputStream = new BufferedOutputStream(new FileOutputStream(
-                        Environment.getExternalStorageDirectory().getAbsolutePath() + "/CWSBoco Product Tool/"+MainActivity.sAccName+"_"+MainActivity.ProductCode.getProductCode()+".pdf"));
-                ftp.retrieveFile("/news.sj-help.com/wwwroot/News/wp-content/uploads/"+MainActivity.ProductCode.getProductCode()+".pdf", outputStream);
+                        Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/"+MainActivity.sAccName+"_"+MainActivity.ProductCode.getProductCode()+".pdf"));
+                ftp.retrieveFile("wwwroot/News/wp-content/uploads/"+MainActivity.ProductCode.getProductCode()+".pdf", outputStream);
 
             } finally {
                 if (outputStream != null) {

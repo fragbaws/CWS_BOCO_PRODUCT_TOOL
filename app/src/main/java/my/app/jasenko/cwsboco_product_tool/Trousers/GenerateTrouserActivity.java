@@ -2,6 +2,7 @@ package my.app.jasenko.cwsboco_product_tool.Trousers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,6 +43,15 @@ public class GenerateTrouserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                File folder = new File(Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/");
+                if (folder.isDirectory())
+                {
+                    String[] children = folder.list();
+                    for (int i = 0; i < children.length; i++)
+                    {
+                        new File(folder, children[i]).delete();
+                    }
+                }
                 DownloadTask task = new DownloadTask();
                 task.mContext = GenerateTrouserActivity.this;
                 task.execute();

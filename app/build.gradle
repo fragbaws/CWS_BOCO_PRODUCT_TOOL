@@ -6,8 +6,8 @@ android {
         applicationId "my.app.jasenko.cwsboco_product_tool"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 4
-        versionName "1.1"
+        versionCode 5
+        versionName "5.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -48,3 +48,6 @@ dependencies {
     compile 'com.itextpdf:itextg:5.5.10'
     compile 'com.itextpdf.tool:xmlworker:5.5.10'
 }
+
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "739526871166",
+    "firebase_url": "https://cws-boco-product-tool.firebaseio.com",
+    "project_id": "cws-boco-product-tool",
+    "storage_bucket": "cws-boco-product-tool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739526871166:android:a7ca96fd94217461",
+        "android_client_info": {
+          "package_name": "com.example.jasenko.cwsboco_product_tool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739526871166-4lruuo4bn06trq8kr29dj7vbcnoqc4ia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jasenko.cwsboco_product_tool",
+            "certificate_hash": "8679b9d6f83fba10249dfea3c7f6b1c4e9dea930"
+          }
+        },
+        {
+          "client_id": "739526871166-426silatvqtj6j6cspocmajqsdpmtkab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC39R_8O8bTirDsVTJHR8pxbhSNdToNQNQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739526871166-426silatvqtj6j6cspocmajqsdpmtkab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739526871166:android:56307ece97bb7b80",
+        "android_client_info": {
+          "package_name": "my.app.jasenko.cwsboco_product_tool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739526871166-ii4v1i2gh7jvgvchibodmpbnvbfuk3r1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "my.app.jasenko.cwsboco_product_tool",
+            "certificate_hash": "8679b9d6f83fba10249dfea3c7f6b1c4e9dea930"
+          }
+        },
+        {
+          "client_id": "739526871166-426silatvqtj6j6cspocmajqsdpmtkab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC39R_8O8bTirDsVTJHR8pxbhSNdToNQNQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739526871166-426silatvqtj6j6cspocmajqsdpmtkab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

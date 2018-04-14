@@ -46,6 +46,7 @@ public class PDFActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf);
 
+        Log.e("FILE RETRIEVE:", Environment.getExternalStorageDirectory().getAbsolutePath() + "/CWSBoco Product Tool/" + MainActivity.sAccName + "_" + MainActivity.ProductCode.getProductCode() + ".pdf");
         PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
         try {
             File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/CWSBoco Product Tool/" + MainActivity.sAccName + "_" + MainActivity.ProductCode.getProductCode() + ".pdf");

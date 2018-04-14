@@ -2,6 +2,7 @@ package my.app.jasenko.cwsboco_product_tool.Jackets;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -16,6 +17,7 @@ import my.app.jasenko.cwsboco_product_tool.PDFActivity;
 import my.app.jasenko.cwsboco_product_tool.ProductCode;
 import my.app.jasenko.cwsboco_product_tool.R;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,7 +43,15 @@ public class GenerateJacketActivity extends AppCompatActivity  {
         btnGeneratePDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                File folder = new File(Environment.getExternalStorageDirectory() + "/CWSBoco Product Tool/");
+                if (folder.isDirectory())
+                {
+                    String[] children = folder.list();
+                    for (int i = 0; i < children.length; i++)
+                    {
+                        new File(folder, children[i]).delete();
+                    }
+                }
                 DownloadTask task = new DownloadTask();
                 task.mContext = GenerateJacketActivity.this;
                 task.execute();
@@ -54,7 +64,7 @@ public class GenerateJacketActivity extends AppCompatActivity  {
                         Intent myIntent = new Intent(GenerateJacketActivity.this, PDFActivity.class);
                         startActivity(myIntent);
                     }
-                }, 9000);
+                }, 10000);
 
 
             }
